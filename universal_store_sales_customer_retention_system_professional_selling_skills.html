@@ -1,0 +1,2382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Universal Store Sales &amp; Customer Retention System — Professional Selling Skills</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            }
+          }
+        }
+      };
+    }
+  </script>
+  <style>
+    :root {
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-subtle: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #e2e8f0;
+      --accent-emerald: #059669;
+      --accent-indigo: #4f46e5;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* Executive Clean Surfaces */
+    .slide-surface {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+    }
+
+    .airy-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.04);
+      transition: all 0.2s ease;
+    }
+
+    .airy-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 8px 20px -6px rgba(15, 23, 42, 0.08);
+    }
+
+    .subtle-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+
+    .slide-fade-enter {
+      animation: slideFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 5px;
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+
+    /* Mobile-First Responsive Adjustments */
+    @media (max-width: 640px) {
+      .slide-surface {
+        border-radius: 1.25rem !important;
+        padding: 1.25rem !important;
+      }
+      .airy-card {
+        border-radius: 1rem !important;
+        padding: 1rem !important;
+      }
+      input, select, button {
+        font-size: 16px; /* Prevents iOS auto-zoom on focus */
+      }
+    }
+
+    /* ==========================================
+       DEDICATED A4 / PDF PRINT ENGINE
+       ========================================== */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 12mm;
+      }
+
+      html, body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        font-size: 11pt !important;
+        line-height: 1.45 !important;
+        overflow: visible !important;
+        height: auto !important;
+      }
+
+      .no-print,
+      header,
+      footer,
+      #toastContainer {
+        display: none !important;
+      }
+
+      main {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      /* Force ALL slides and ALL subpanels to be visible when printing to PDF */
+      .slide-view-item,
+      #slide-1,
+      #slide-stage-container,
+      #slide-7,
+      #slide-8,
+      .lab-subpanel,
+      #labPanel-fab,
+      #labPanel-objections,
+      #labPanel-ltv {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+
+      .print-page-break {
+        page-break-after: always !important;
+        break-after: page !important;
+        margin-bottom: 16pt !important;
+      }
+
+      .slide-surface,
+      .airy-card,
+      .subtle-box {
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: none !important;
+        border-radius: 8pt !important;
+        padding: 12pt !important;
+        margin-bottom: 10pt !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      h1, h2, h3, h4, p, span, li, label, strong {
+        color: #0f172a !important;
+        -webkit-text-fill-color: #0f172a !important;
+      }
+
+      .print-only-banner {
+        display: block !important;
+        border-bottom: 2px solid #0f172a;
+        padding-bottom: 8pt;
+        margin-bottom: 14pt;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-emerald-600 selection:text-white">
+
+  <!-- Print-Only PDF Cover Header -->
+  <div class="hidden print-only-banner">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <strong style="font-size:16pt;">StoreSalesDeck — Universal 5-Stage Sales &amp; Retention Blueprint</strong>
+        <div style="font-size:10pt; color:#475569;">Based on Coursera • Alfaisal University | KLD: Professional Selling Skills (Grade: 98%)</div>
+      </div>
+      <div style="font-size:10pt; font-weight:700;">Complete 8-Slide PDF Guide</div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="fixed top-4 right-4 z-50 flex flex-col gap-2 max-w-xs sm:max-w-sm w-full pointer-events-none px-2 sm:px-0 no-print"></div>
+
+  <!-- COMPACT, MOBILE-FRIENDLY TOP HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 no-print">
+    <div class="max-w-6xl mx-auto px-3 sm:px-6">
+      <div class="flex items-center justify-between h-14 sm:h-16 gap-2">
+        <!-- Brand Identity -->
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-600 flex items-center justify-center shadow-sm shrink-0">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <div class="truncate">
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-sm sm:text-base tracking-tight text-slate-900">StoreSales<span class="text-emerald-600">Deck</span></span>
+              <span class="hidden lg:inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200">
+                Coursera • Alfaisal University | KLD
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-500 truncate hidden sm:block">Universal Step-by-Step Sales &amp; Customer Lock-In System</p>
+          </div>
+        </div>
+
+        <!-- Mobile Dropdown + Action Buttons -->
+        <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+          <!-- Mobile Quick Slide Selector (Visible on small screens) -->
+          <select
+            id="mobileSlideSelect"
+            aria-label="Select Slide"
+            class="md:hidden bg-slate-100 border border-slate-300 text-slate-800 rounded-lg px-2 py-1.5 text-xs font-bold focus:outline-none focus:border-emerald-600 max-w-[135px] sm:max-w-[180px]"
+          >
+            <option value="1">1. Store Setup</option>
+            <option value="2">2. Stage 1: Pricing</option>
+            <option value="3">3. Stage 2: Discovery</option>
+            <option value="4">4. Stage 3: FAB Pitch</option>
+            <option value="5">5. Stage 4: Closing</option>
+            <option value="6">6. Stage 5: Lock-In</option>
+            <option value="7">7. Interactive Lab</option>
+            <option value="8">8. Golden Rules</option>
+            <option value="0">★ All 8 Slides</option>
+          </select>
+
+          <!-- Readiness Badge -->
+          <div class="hidden sm:flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-xl">
+            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+            <span class="text-[11px] text-slate-600 font-semibold">Readiness:</span>
+            <span id="headerScoreBadge" class="text-xs font-extrabold text-emerald-700">15%</span>
+          </div>
+
+          <!-- View All Slides Toggle -->
+          <button
+            type="button"
+            id="toggleAllSlidesBtn"
+            class="px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 transition whitespace-nowrap"
+          >
+            View All Slides
+          </button>
+
+          <!-- Print / Save PDF Button -->
+          <button
+            type="button"
+            id="printReportBtn"
+            class="px-2.5 sm:px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition flex items-center gap-1.5 whitespace-nowrap"
+          >
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            <span>Print Deck</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Desktop Horizontal Slide Selector Pills -->
+      <div class="hidden md:flex items-center gap-1.5 overflow-x-auto custom-scrollbar py-2 border-t border-slate-100" id="slideNavPills">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Top Progress Bar -->
+    <div class="w-full h-1 bg-slate-100">
+      <div id="topSlideProgressBar" class="h-full bg-gradient-to-r from-emerald-600 via-teal-500 to-indigo-600 transition-all duration-300" style="width: 12.5%"></div>
+    </div>
+  </header>
+
+  <!-- MAIN RESPONSIVE SLIDE WORKSPACE -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-8">
+
+    <!-- ==========================================
+         SLIDE 1: WELCOME, STORE CUSTOMIZER & INTERACTIVE FUNNEL DIAGRAM
+         ========================================== -->
+    <section id="slide-1" data-slide="1" class="slide-view-item print-page-break slide-fade-enter space-y-6 sm:space-y-8">
+      <div class="slide-surface rounded-3xl p-5 sm:p-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+          <!-- Left 7 Cols: Intro & Universal Store Customizer -->
+          <div class="lg:col-span-7 space-y-5">
+            <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold">
+              <span>Slide 1 of 8 • Universal Store Blueprint</span>
+              <span>•</span>
+              <span>Professional Selling Skills (98% Grade)</span>
+            </div>
+
+            <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+              From Store Launch to <span class="text-emerald-600">Lifetime Customer Lock-In</span>
+            </h1>
+
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+              A clean, step-by-step sales execution deck built for <strong class="text-slate-900">any online or retail store</strong>. Move systematically from initial product pricing and customer discovery to FAB value pitching, objection handling, and repeat purchases.
+            </p>
+
+            <!-- Universal Store Customizer Card -->
+            <div class="subtle-box rounded-2xl p-4 sm:p-6 space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-700">
+                  ⚙️ Customize Deck for Your Store
+                </span>
+                <span class="text-[11px] font-medium text-slate-500">Adapts examples across all 8 slides</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="customStoreNameInput" class="block text-xs font-bold text-slate-700 mb-1.5">Your Store / Brand Name:</label>
+                  <input
+                    type="text"
+                    id="customStoreNameInput"
+                    value="My Flagship Store"
+                    placeholder="Enter your store name..."
+                    class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 font-medium focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5">Select Your Store Category:</label>
+                  <div class="grid grid-cols-2 gap-2" id="storeProfileSwitcher">
+                    <button type="button" data-profile="ecommerce" class="profile-btn px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow-sm transition">
+                      🛍️ E-Commerce
+                    </button>
+                    <button type="button" data-profile="digital" class="profile-btn px-3 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition">
+                      💻 Digital / SaaS
+                    </button>
+                    <button type="button" data-profile="services" class="profile-btn px-3 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition">
+                      🤝 Services / B2B
+                    </button>
+                    <button type="button" data-profile="subscription" class="profile-btn px-3 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition">
+                      📦 Subscription
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 5 Cols: Crisp Interactive Vector Funnel Architecture (Replaces old blurry image) -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="airy-card rounded-2xl p-5 border border-slate-200 space-y-4 bg-gradient-to-b from-slate-50 to-white">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <div>
+                  <p class="text-xs font-extrabold uppercase tracking-wider text-emerald-700">Interactive Sales Architecture</p>
+                  <p class="text-sm font-extrabold text-slate-900 mt-0.5" id="heroActiveProfileTitle">Active Blueprint: My Flagship Store (Physical E-Commerce)</p>
+                  <p class="text-[11px] text-slate-500 mt-0.5" id="heroActiveProfileSub">5 Focused Stages • 10 Golden Rules • Interactive Tools</p>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 font-extrabold text-xs shrink-0">
+                  98%
+                </div>
+              </div>
+
+              <!-- Crisp Vector Funnel Visual Diagram (Zero Blurry Pixels, Mobile & Print Perfect) -->
+              <div class="space-y-2" role="region" aria-label="5-Stage Sales Conversion Funnel">
+                <div onclick="window.deckGoToSlide && window.deckGoToSlide(2)" class="cursor-pointer group flex items-center justify-between p-2.5 rounded-xl bg-emerald-50/70 hover:bg-emerald-100/80 border border-emerald-200 transition">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="w-6 h-6 rounded-lg bg-emerald-600 text-white font-extrabold text-xs flex items-center justify-center shrink-0">1</span>
+                    <div class="truncate">
+                      <p class="text-xs font-bold text-slate-900 truncate">Stage 1: Value &amp; 3-Tier Pricing</p>
+                      <p class="text-[10px] text-slate-600 truncate">Margin protection &amp; risk-reversal guarantee</p>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-bold text-emerald-700 shrink-0 ml-2">100% Reach →</span>
+                </div>
+
+                <div onclick="window.deckGoToSlide && window.deckGoToSlide(3)" class="cursor-pointer group flex items-center justify-between p-2.5 rounded-xl bg-teal-50/70 hover:bg-teal-100/80 border border-teal-200 transition sm:mx-2">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="w-6 h-6 rounded-lg bg-teal-600 text-white font-extrabold text-xs flex items-center justify-center shrink-0">2</span>
+                    <div class="truncate">
+                      <p class="text-xs font-bold text-slate-900 truncate">Stage 2: Discovery (70/30 Rule)</p>
+                      <p class="text-[10px] text-slate-600 truncate">Listen 70%, diagnose needs with SPIN</p>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-bold text-teal-700 shrink-0 ml-2">Diagnose →</span>
+                </div>
+
+                <div onclick="window.deckGoToSlide && window.deckGoToSlide(4)" class="cursor-pointer group flex items-center justify-between p-2.5 rounded-xl bg-indigo-50/70 hover:bg-indigo-100/80 border border-indigo-200 transition sm:mx-4">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="w-6 h-6 rounded-lg bg-indigo-600 text-white font-extrabold text-xs flex items-center justify-center shrink-0">3</span>
+                    <div class="truncate">
+                      <p class="text-xs font-bold text-slate-900 truncate">Stage 3: FAB Value Presentation</p>
+                      <p class="text-[10px] text-slate-600 truncate">Feature → Advantage → Customer Benefit</p>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-bold text-indigo-700 shrink-0 ml-2">Pitch →</span>
+                </div>
+
+                <div onclick="window.deckGoToSlide && window.deckGoToSlide(5)" class="cursor-pointer group flex items-center justify-between p-2.5 rounded-xl bg-amber-50/80 hover:bg-amber-100/80 border border-amber-200 transition sm:mx-6">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="w-6 h-6 rounded-lg bg-amber-600 text-white font-extrabold text-xs flex items-center justify-center shrink-0">4</span>
+                    <div class="truncate">
+                      <p class="text-xs font-bold text-slate-900 truncate">Stage 4: LAER Objections &amp; Close</p>
+                      <p class="text-[10px] text-slate-600 truncate">Isolate hesitation &amp; Alternative Choice Close</p>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-bold text-amber-800 shrink-0 ml-2">Convert →</span>
+                </div>
+
+                <div onclick="window.deckGoToSlide && window.deckGoToSlide(6)" class="cursor-pointer group flex items-center justify-between p-2.5 rounded-xl bg-emerald-600 text-white shadow-sm hover:bg-emerald-700 transition sm:mx-8">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="w-6 h-6 rounded-lg bg-white text-emerald-700 font-extrabold text-xs flex items-center justify-center shrink-0">5</span>
+                    <div class="truncate">
+                      <p class="text-xs font-bold text-white truncate">Stage 5: 90-Day Customer Lock-In</p>
+                      <p class="text-[10px] text-emerald-100 truncate">Repeat orders, VIP cross-sell &amp; referrals</p>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-extrabold text-white shrink-0 ml-2">LTV Lock 🔒</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Readiness Progress Card -->
+            <div class="airy-card rounded-2xl p-4 sm:p-5 space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-extrabold text-slate-800">Store Execution Checklist</span>
+                <div class="flex items-center gap-2.5">
+                  <span id="heroProgressText" class="text-xs font-extrabold text-emerald-700">3 / 20 Completed (15%)</span>
+                  <button type="button" id="resetChecklistBtn" class="text-xs text-slate-500 hover:text-rose-600 underline font-medium no-print">Reset</button>
+                </div>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                <div id="heroProgressBar" class="h-full bg-gradient-to-r from-emerald-600 to-teal-500 transition-all duration-300" style="width: 15%"></div>
+              </div>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Open <strong class="text-slate-800">Slides 2 to 6</strong> to check off each stage's action items. Progress saves automatically in your browser.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom 5-Stage Quick Jump Cards -->
+        <div class="mt-8 pt-6 border-t border-slate-200">
+          <p class="text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-3">
+            Tap Any Stage Below to Open Its Dedicated Slide:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3" id="overviewStageCards">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDES 2 TO 6: INDIVIDUAL STAGE SLIDES
+         ========================================== -->
+    <section id="slide-stage-container" class="slide-view-item hidden space-y-6 sm:space-y-8">
+      <!-- Populated dynamically by JS -->
+    </section>
+
+    <!-- ==========================================
+         SLIDE 7: INTERACTIVE FAB LAB, OBJECTION SIMULATOR & LTV ENGINE
+         ========================================== -->
+    <section id="slide-7" data-slide="7" class="slide-view-item print-page-break hidden space-y-6 sm:space-y-8">
+      <div class="slide-surface rounded-3xl p-5 sm:p-10 space-y-8">
+        <!-- Slide Header -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-slate-200 pb-6">
+          <div class="space-y-2">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+              Slide 7 of 8 • Interactive Sales Engineering Lab
+            </span>
+            <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900">
+              FAB Pitch Builder, Objection Simulator &amp; LTV Calculator
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600">
+              Use the 3 interactive tools below to generate product pitches, practice LAER objection responses, and calculate repeat customer revenue.
+            </p>
+          </div>
+
+          <!-- Sub-Tool Switcher Tabs -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 shrink-0 no-print">
+            <button type="button" data-lab-tab="fab" class="lab-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow-sm transition text-center">
+              1. FAB Pitch Builder
+            </button>
+            <button type="button" data-lab-tab="objections" class="lab-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-900 transition text-center">
+              2. Objection Simulator
+            </button>
+            <button type="button" data-lab-tab="ltv" class="lab-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-900 transition text-center">
+              3. Retention &amp; LTV Calculator
+            </button>
+          </div>
+        </div>
+
+        <!-- SUB-PANEL A: FAB PITCH BUILDER -->
+        <div id="labPanel-fab" class="lab-subpanel grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div class="lg:col-span-7 airy-card rounded-2xl p-5 sm:p-7 space-y-5">
+            <div>
+              <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">FAB (Feature → Advantage → Benefit) Converter</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                Customers never buy raw product specifications—they buy the outcome. Tap a preset or type your own product details:
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 no-print" id="fabPresetButtons">
+              <button type="button" data-fab="ecom_fast" class="fab-preset-btn px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white transition text-left">
+                🛍️ Physical Product: Express Quality
+              </button>
+              <button type="button" data-fab="saas_auto" class="fab-preset-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-50 text-slate-700 border border-slate-300 hover:border-emerald-600 transition text-left">
+                💻 Digital / App: 1-Click Automation
+              </button>
+              <button type="button" data-fab="service_vip" class="fab-preset-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-50 text-slate-700 border border-slate-300 hover:border-emerald-600 transition text-left">
+                🤝 Service Agency: Dedicated Turnaround
+              </button>
+              <button type="button" data-fab="sub_loyalty" class="fab-preset-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-50 text-slate-700 border border-slate-300 hover:border-emerald-600 transition text-left">
+                📦 Subscription Box: Curated Refills
+              </button>
+            </div>
+
+            <div class="space-y-3.5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label for="fabProductInput" class="block text-xs font-bold text-slate-700 mb-1">Store / Product Name</label>
+                  <input type="text" id="fabProductInput" value="Flagship Store Collection" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:border-emerald-600" />
+                </div>
+                <div>
+                  <label for="fabPersonaInput" class="block text-xs font-bold text-slate-700 mb-1">Target Customer Segment</label>
+                  <input type="text" id="fabPersonaInput" value="Quality-Conscious Online Shoppers" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:border-emerald-600" />
+                </div>
+              </div>
+
+              <div>
+                <label for="fabFeatureInput" class="block text-xs font-bold text-slate-700 mb-1">1. Feature (What the product has / specification)</label>
+                <input type="text" id="fabFeatureInput" value="Premium certified materials with tracked 24-hour express dispatch and 30-day free exchange" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:border-emerald-600" />
+              </div>
+
+              <div>
+                <label for="fabAdvantageInput" class="block text-xs font-bold text-slate-700 mb-1">2. Advantage (How it performs better than alternatives)</label>
+                <input type="text" id="fabAdvantageInput" value="Eliminates shipping delays and sizing/quality uncertainty when ordering online" class="w-full bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:border-emerald-600" />
+              </div>
+
+              <div>
+                <label for="fabBenefitInput" class="block text-xs font-bold text-emerald-700 mb-1">3. Customer Benefit (The emotional or financial win for the buyer)</label>
+                <input type="text" id="fabBenefitInput" value="You enjoy your purchase tomorrow with 100% confidence and zero buyer's remorse" class="w-full bg-white border border-emerald-500 rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none focus:border-emerald-600" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Output Pitch Card -->
+          <div class="lg:col-span-5 airy-card rounded-2xl p-5 sm:p-7 border-2 border-emerald-500/30 bg-emerald-50/30 space-y-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-800">⚡ Ready-to-Use FAB Sales Script</span>
+              <button type="button" id="copyFabPitchBtn" class="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700 transition no-print">
+                Copy Pitch
+              </button>
+            </div>
+            <p id="fabGeneratedOutput" class="text-sm sm:text-base text-slate-800 leading-relaxed bg-white p-4 sm:p-5 rounded-xl border border-emerald-200 shadow-sm"></p>
+            <div class="space-y-1.5 text-xs text-slate-600 bg-white p-4 rounded-xl border border-slate-200">
+              <p class="font-extrabold text-amber-700">💡 Why This Works in Any Store:</p>
+              <p class="leading-relaxed">
+                By linking the <strong>Feature</strong> to the <strong>Advantage</strong> with <em>"Because of this..."</em> and landing on the <strong>Benefit</strong> with <em>"...which means for you,"</em> the customer immediately visualizes the value rather than fixating on price.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUB-PANEL B: OBJECTION SIMULATOR (LAER) -->
+        <div id="labPanel-objections" class="lab-subpanel hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div class="lg:col-span-5 space-y-4">
+            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">Select a Customer Objection:</h3>
+            <p class="text-xs sm:text-sm text-slate-600">
+              Tap any common store objection to view the 4-step LAER response and closing question:
+            </p>
+            <div class="space-y-2" id="objectionButtonsContainer">
+              <!-- Populated by JS -->
+            </div>
+
+            <!-- Quick Reflex Quiz -->
+            <div class="airy-card rounded-2xl p-4 sm:p-5 space-y-3 mt-4 border border-amber-300 bg-amber-50/40">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-extrabold text-amber-900">🎯 Reflex Check: "Your price is too high!"</span>
+                <span id="quizResultBadge" class="text-[11px] font-bold text-slate-600">Pick Best Reply</span>
+              </div>
+              <div class="space-y-2">
+                <button type="button" data-quiz="wrong1" class="quiz-opt-btn w-full text-left p-2.5 rounded-xl text-xs bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-medium transition">
+                  A) Immediately slash 25% off the price so they don't leave.
+                </button>
+                <button type="button" data-quiz="correct" class="quiz-opt-btn w-full text-left p-2.5 rounded-xl text-xs bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-medium transition">
+                  B) Empathize (LAER), isolate the objection, and contrast price against long-term value/durability.
+                </button>
+                <button type="button" data-quiz="wrong2" class="quiz-opt-btn w-full text-left p-2.5 rounded-xl text-xs bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-medium transition">
+                  C) Tell them cheaper competitors have terrible quality.
+                </button>
+              </div>
+              <p id="quizFeedbackText" class="text-xs hidden pt-1 font-semibold"></p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7" id="objectionDetailCard">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- SUB-PANEL C: RETENTION & LTV SIMULATOR -->
+        <div id="labPanel-ltv" class="lab-subpanel hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div class="lg:col-span-5 airy-card rounded-2xl p-5 sm:p-7 space-y-5">
+            <div>
+              <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">Store Retention &amp; LTV Multiplier</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                See how adding Stage 5 (Post-Sale Follow-Up &amp; Cross-Selling) transforms any store's annual revenue without extra ad spend.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="text-slate-700 font-bold">Monthly New Buyers:</span>
+                  <span id="simCustVal" class="font-extrabold text-emerald-700">50 Buyers / mo</span>
+                </div>
+                <input type="range" id="simCustSlider" min="10" max="300" step="10" value="50" class="w-full accent-emerald-600 cursor-pointer" />
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="text-slate-700 font-bold">Average Order Value ($):</span>
+                  <span id="simAovVal" class="font-extrabold text-emerald-700">$120</span>
+                </div>
+                <input type="range" id="simAovSlider" min="20" max="1000" step="10" value="120" class="w-full accent-emerald-600 cursor-pointer" />
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="text-slate-700 font-bold">Repeat Purchase Rate (Stage 5):</span>
+                  <span id="simRetVal" class="font-extrabold text-indigo-700">60%</span>
+                </div>
+                <input type="range" id="simRetSlider" min="10" max="95" step="5" value="60" class="w-full accent-indigo-600 cursor-pointer" />
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-1">
+                  <span class="text-slate-700 font-bold">Cross-Sell / Bundle Boost (%):</span>
+                  <span id="simCrossVal" class="font-extrabold text-amber-700">30%</span>
+                </div>
+                <input type="range" id="simCrossSlider" min="0" max="100" step="5" value="30" class="w-full accent-amber-600 cursor-pointer" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <p class="text-[11px] font-semibold text-slate-500">One-Time Sales Only</p>
+                <p id="simBaseRev" class="text-base sm:text-lg font-extrabold text-slate-800 mt-0.5">$72,000 / yr</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-300">
+                <p class="text-[11px] font-bold text-emerald-800">With Stage 5 Lock-In</p>
+                <p id="simLockedRev" class="text-base sm:text-lg font-extrabold text-emerald-700 mt-0.5">$122,760 / yr</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 airy-card rounded-2xl p-5 sm:p-7 space-y-4">
+            <div class="flex items-center justify-between">
+              <h4 class="text-xs sm:text-sm font-extrabold text-slate-800">
+                Cumulative 4-Quarter Store Revenue Comparison (USD)
+              </h4>
+              <span id="simNetGainBadge" class="px-2.5 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800">
+                +$50,760 Extra LTV
+              </span>
+            </div>
+
+            <!-- Native Zero-Dependency Visual Bar Comparison (Always works offline, on GitHub Pages & in PDF Print) -->
+            <div id="nativeLtvBars" class="space-y-3 pt-1"></div>
+
+            <!-- Chart.js Canvas (Enhanced visual when online) -->
+            <div class="relative h-56 w-full pt-2 no-print">
+              <canvas id="retentionChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SLIDE 8: COURSERA MODULES, 10 GOLDEN RULES & UNIVERSAL MATRIX
+         ========================================== -->
+    <section id="slide-8" data-slide="8" class="slide-view-item hidden space-y-6 sm:space-y-8">
+      <div class="slide-surface rounded-3xl p-5 sm:p-10 space-y-8">
+        <!-- Header -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 border-b border-slate-200 pb-6">
+          <div class="space-y-2">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200">
+              Slide 8 of 8 • Complete Course Reference &amp; Golden Rules
+            </span>
+            <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900">
+              4 Coursera Modules &amp; 10 Golden Rules for Any Store
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600">
+              Every principle from the <em>Professional Selling Skills</em> certification distilled into clean reference cards.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 no-print" id="moduleFilterTabs">
+            <button type="button" data-mod="all" class="mod-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-white transition">All 4 Modules</button>
+            <button type="button" data-mod="m1" class="mod-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-900 transition">Mod 1: Intro</button>
+            <button type="button" data-mod="m2" class="mod-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-900 transition">Mod 2: Comm</button>
+            <button type="button" data-mod="m3" class="mod-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-900 transition">Mod 3: Steps</button>
+            <button type="button" data-mod="m4" class="mod-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-900 transition">Mod 4: Rules</button>
+          </div>
+        </div>
+
+        <!-- 4 Course Modules Grid -->
+        <div id="courseModulesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- 10 Golden Rules Search & Cards -->
+        <div class="pt-6 border-t border-slate-200 space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 class="text-lg sm:text-2xl font-extrabold text-slate-900">
+                The 10 Golden Rules of Selling (Amateur vs. Pro)
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-0.5">
+                Quick-reference guide so any store seller stays disciplined and avoids common traps.
+              </p>
+            </div>
+            <div class="flex items-center gap-2 no-print">
+              <input
+                type="text"
+                id="goldenRuleSearchInput"
+                placeholder="Filter rules (e.g., price, listen)..."
+                class="w-full sm:w-60 bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-600"
+              />
+              <button type="button" id="copyMatrixCsvBtn" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 transition shrink-0">
+                📋 Copy Plan
+              </button>
+            </div>
+          </div>
+
+          <div id="goldenRulesContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SLEEK BOTTOM SLIDE NAVIGATION DOCK -->
+  <footer class="sticky bottom-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 py-2.5 sm:py-3.5 px-3 sm:px-6 no-print">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-2">
+      <button
+        type="button"
+        id="prevSlideBtn"
+        class="px-3.5 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 transition flex items-center gap-1.5 disabled:opacity-40"
+      >
+        <span>←</span>
+        <span>Prev</span>
+      </button>
+
+      <div class="text-center min-w-0 px-1">
+        <p id="bottomSlideTitle" class="text-xs sm:text-sm font-extrabold text-slate-900 truncate">
+          Slide 1 of 8: Store Setup &amp; Overview
+        </p>
+        <p class="text-[11px] text-slate-500 hidden sm:block">
+          Use Left/Right arrows or tap any slide above • Works 100% on GitHub Pages &amp; Mobile
+        </p>
+      </div>
+
+      <button
+        type="button"
+        id="nextSlideBtn"
+        class="px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition flex items-center gap-1.5"
+      >
+        <span>Next</span>
+        <span>→</span>
+      </button>
+    </div>
+  </footer>
+
+  <!-- SELF-CONTAINED, ERROR-PROOF APPLICATION JAVASCRIPT -->
+  <script>
+    (function () {
+      'use strict';
+
+      // ==========================================
+      // 1. SLIDE DEFINITIONS & UNIVERSAL STORE DATA
+      // ==========================================
+
+      const SLIDES_META = [
+        { num: 1, label: '1. Store Setup', fullTitle: 'Slide 1 of 8: Universal Store Setup & Overview' },
+        { num: 2, label: '2. Stage 1: Foundation', fullTitle: 'Slide 2 of 8: Stage 1 — Store Foundation & Pricing' },
+        { num: 3, label: '3. Stage 2: Discovery', fullTitle: 'Slide 3 of 8: Stage 2 — Communication & Needs (70/30)' },
+        { num: 4, label: '4. Stage 3: FAB Pitch', fullTitle: 'Slide 4 of 8: Stage 3 — FAB Value Presentation' },
+        { num: 5, label: '5. Stage 4: Closing', fullTitle: 'Slide 5 of 8: Stage 4 — Objection Handling & Closing' },
+        { num: 6, label: '6. Stage 5: Lock-In', fullTitle: 'Slide 6 of 8: Stage 5 — Post-Sale Customer Lock-In' },
+        { num: 7, label: '7. Interactive Lab', fullTitle: 'Slide 7 of 8: Interactive FAB, Objection & LTV Lab' },
+        { num: 8, label: '8. Golden Rules', fullTitle: 'Slide 8 of 8: Coursera Modules & 10 Golden Rules' }
+      ];
+
+      const STORE_PROFILES = {
+        ecommerce: {
+          name: 'Physical E-Commerce Store',
+          icon: '🛍️',
+          sub: 'Fashion, Electronics, Home Goods, Cosmetics & Retail Brands'
+        },
+        digital: {
+          name: 'Digital Products & SaaS Store',
+          icon: '💻',
+          sub: 'Software, Templates, Courses, Apps & Licenses'
+        },
+        services: {
+          name: 'Services, Agency & Freelance Store',
+          icon: '🤝',
+          sub: 'Consulting, Design, Marketing, Coaching & B2B Packages'
+        },
+        subscription: {
+          name: 'Subscription & Repeat Consumables',
+          icon: '📦',
+          sub: 'Coffee, Supplements, Monthly Boxes & Membership Clubs'
+        }
+      };
+
+      const STAGES_DATA = [
+        {
+          id: 1,
+          slideNum: 2,
+          code: 'STAGE 01 • THE BEGINNING',
+          shortTitle: 'Foundation & Pricing',
+          fullTitle: 'Stage 1: Store Foundation, Value Positioning & Pricing Psychology',
+          phaseBadge: 'Pre-Sale Foundation',
+          courseTieIn: 'Coursera Module 1: Introduction to Selling — Value Creation & Price-to-Value Framing',
+          summary: 'Before speaking to any buyer, a successful store structures its product tiers, profit margins, and risk-reversal guarantees so the price feels small compared to the value received.',
+          categoryExamples: {
+            ecommerce: {
+              pricing: '3-Tier Offer: Single Item ($49) | Best-Seller Bundle ($99 — 65% Margin) | VIP Complete Kit ($159)',
+              strategy: 'Use free shipping thresholds and a 30-day effortless exchange guarantee to remove online ordering hesitation.'
+            },
+            digital: {
+              pricing: '3-Tier Offer: Starter License ($39) | Pro Annual Plan ($99 — 80% Margin) | Lifetime VIP Access ($249)',
+              strategy: 'Provide instant automated delivery and a 7-day sandbox trial so users experience the software immediately.'
+            },
+            services: {
+              pricing: '3-Tier Offer: Audit Session ($150) | Core Execution Package ($500 — 65% Margin) | Retainer Partner ($1,200)',
+              strategy: 'Productize your services into clear deliverables with fixed timelines instead of vague hourly billing.'
+            },
+            subscription: {
+              pricing: '3-Tier Offer: Monthly Try-Out ($35/mo) | Quarterly Lock-In ($29/mo) | Annual VIP Member ($24/mo)',
+              strategy: 'Make subscribing 20% cheaper than one-time buying and allow 1-click pause/skip so buyers never fear commitment.'
+            }
+          },
+          proTips: [
+            'Never compete on being the cheapest store—compete on clarity, trust, and risk-free outcomes.',
+            'Apply 3-Tier Price Anchoring (Good / Better / Best): Over 65% of shoppers naturally choose the middle "Best-Seller" package.',
+            'Highlight the Value Gap: Always show the customer how much time, money, or frustration your product saves them.'
+          ],
+          checklist: [
+            { id: 's1_c1', text: 'Create a clear 3-tier product/package structure (Starter, Best-Seller Pro, VIP Bundle) with healthy margins.' },
+            { id: 's1_c2', text: 'Write a 1-sentence Unique Value Proposition (UVP) explaining why your store beats generic alternatives.' },
+            { id: 's1_c3', text: 'Add a visible Risk-Reversal Guarantee (Money-back, free exchange, or trial) next to the price.' },
+            { id: 's1_c4', text: 'Prepare instant post-checkout onboarding (Tracking link, quick-start guide, or welcome kit).' }
+          ]
+        },
+        {
+          id: 2,
+          slideNum: 3,
+          code: 'STAGE 02 • DISCOVERY',
+          shortTitle: 'Communication & Needs',
+          fullTitle: 'Stage 2: Effective Communication, Active Listening & Needs Analysis',
+          phaseBadge: 'Customer Discovery Phase',
+          courseTieIn: 'Coursera Module 2: Effective Communication — The 70/30 Listening Rule & SPIN Questions',
+          summary: 'Amateur sellers push products immediately; professional sellers diagnose first. Let the customer talk 70% of the time and ask smart diagnostic questions to uncover their true buying motive.',
+          categoryExamples: {
+            ecommerce: {
+              pricing: 'Discovery Focus: Uncover the shopper\'s occasion, style/size preference, and past frustrations with other stores.',
+              strategy: 'Use interactive store quizzes, WhatsApp/Live Chat prompts ("Shopping for yourself or a gift?"), and social polls.'
+            },
+            digital: {
+              pricing: 'Discovery Focus: Identify the exact workflow bottleneck, time wasted daily, or security/data risk they face.',
+              strategy: 'Ask SPIN questions in demos or onboarding chats: "How many hours a week does manual work cost your team?"'
+            },
+            services: {
+              pricing: 'Discovery Focus: Diagnose the revenue gap—what is costing the client leads, sales, or brand credibility right now?',
+              strategy: 'Use a 5-minute diagnostic intake form or discovery call where you listen 70% before proposing any package.'
+            },
+            subscription: {
+              pricing: 'Discovery Focus: Understand their daily consumption routine and how often they run out of essentials.',
+              strategy: 'Ask 3 quick routine questions ("How many cups/servings a week?") to recommend the exact refill frequency.'
+            }
+          },
+          proTips: [
+            'Obey the Golden 70/30 Rule: Listen 70% of the interaction and speak only 30% to guide the buyer with open-ended questions.',
+            'Use the SPIN Framework: Situation → Problem → Implication ("What happens if this problem isn\'t fixed?") → Need-Payoff.',
+            'Mirror the customer\'s tone: Give fast, direct answers to decisive buyers, and warm, reassuring guidance to hesitant buyers.'
+          ],
+          checklist: [
+            { id: 's2_c1', text: 'Define your Ideal Customer Persona (top 3 practical problems + top 3 emotional desires).' },
+            { id: 's2_c2', text: 'Prepare 4 Open-Ended Discovery Questions to ask customers in chat, DMs, or product quizzes before pitching.' },
+            { id: 's2_c3', text: 'Eliminate confusing technical jargon from your store product pages and customer chat scripts.' },
+            { id: 's2_c4', text: 'Train sellers/support to validate the customer\'s problem with empathy before recommending a product.' }
+          ]
+        },
+        {
+          id: 3,
+          slideNum: 4,
+          code: 'STAGE 03 • VALUE PITCH',
+          shortTitle: 'FAB Value Pitching',
+          fullTitle: 'Stage 3: Transforming Features into Customer Benefits (FAB Formula)',
+          phaseBadge: 'Value Presentation Phase',
+          courseTieIn: 'Coursera Module 3: Professional Selling Steps — Feature → Advantage → Benefit (FAB) Bridge',
+          summary: 'Customers never buy what a product IS; they buy what it DOES for them. Connect every store feature directly to the specific customer need you uncovered in Stage 2.',
+          categoryExamples: {
+            ecommerce: {
+              pricing: 'Feature: Breathable waterproof fabric → Advantage: Stays dry in rain without overheating →',
+              strategy: 'Benefit: You stay comfortable outdoors all day without carrying extra jackets. (Micro-Action: Pick your size).'
+            },
+            digital: {
+              pricing: 'Feature: Automated cloud sync & encryption → Advantage: Protects and updates files in 1 click →',
+              strategy: 'Benefit: Zero stress about losing client work or data leaks. (Micro-Action: Try the 5-minute interactive demo).'
+            },
+            services: {
+              pricing: 'Feature: Dedicated 48-hour delivery sprint → Advantage: Launches your campaign weeks faster than agencies →',
+              strategy: 'Benefit: You start capturing paying leads this weekend. (Micro-Action: Book your 10-minute kickoff slot).'
+            },
+            subscription: {
+              pricing: 'Feature: Freshly roasted/packed on ship day → Advantage: Arrives at peak flavor automatically →',
+              strategy: 'Benefit: You enjoy café-quality mornings at home without ever running out. (Micro-Action: Claim your starter box).'
+            }
+          },
+          proTips: [
+            'Use the magic bridge phrase: "Which means for you..." after every product specification so you always land on a customer benefit.',
+            'Focus on the Top 3 Benefits that match the buyer\'s priorities—listing 15 minor features dilutes impact and confuses the shopper.',
+            'Ask for a low-risk Micro-Commitment (e.g., selecting a color, testing a sample, or previewing a mockup) to build ownership.'
+          ],
+          checklist: [
+            { id: 's3_c1', text: 'Rewrite all store product descriptions using the Feature → Advantage → Benefit (FAB) formula.' },
+            { id: 's3_c2', text: 'Show clear "Before vs. After" comparisons or visual demonstrations of the product in action.' },
+            { id: 's3_c3', text: 'Create a low-friction Micro-Commitment step (Sample, interactive preview, or free consultation).' },
+            { id: 's3_c4', text: 'Use Trial Closing questions during the pitch ("How does this package fit what you were looking for?").' }
+          ]
+        },
+        {
+          id: 4,
+          slideNum: 5,
+          code: 'STAGE 04 • CLOSING',
+          shortTitle: 'Objections & Closing',
+          fullTitle: 'Stage 4: Mastering Customer Objections (LAER) & Closing the Sale',
+          phaseBadge: 'Conversion & Deal Closing',
+          courseTieIn: 'Coursera Module 3 & 4: LAER Objection Handling, Ethical Negotiation & Closing Techniques',
+          summary: 'An objection is not a rejection—it is a sign of interest asking for reassurance. Resolve hesitation calmly using LAER, protect your profit margins, and guide the buyer to a confident decision.',
+          categoryExamples: {
+            ecommerce: {
+              pricing: 'Objection: "Shipping or price feels high" → Rebuttal: Break down cost-per-use + free bundle shipping.',
+              strategy: 'Closing Technique: Alternative Choice Close ("Would you like the Classic Black or the Limited Edition Bundle?").'
+            },
+            digital: {
+              pricing: 'Objection: "I need to think about the price" → Rebuttal: Contrast license price against the cost of manual errors.',
+              strategy: 'Closing Technique: Trial Close ("Start with the 7-day risk-free activation and see the time saved yourself").'
+            },
+            services: {
+              pricing: 'Objection: "We already work with someone else" → Rebuttal: Propose a small pilot project to compare speed & ROI.',
+              strategy: 'Closing Technique: Summary-of-Benefits Close + "Shall we schedule kickoff for Monday or Wednesday?"'
+            },
+            subscription: {
+              pricing: 'Objection: "I don\'t want to be locked into a monthly fee" → Rebuttal: Show 1-click cancel/skip anytime policy.',
+              strategy: 'Closing Technique: Bonus Incentive Close ("Lock in your first box today and get the VIP welcome gift free").'
+            }
+          },
+          proTips: [
+            'Apply the 4-Step LAER Method: Listen without interrupting → Acknowledge with empathy → Explore the real concern → Respond with value.',
+            'Never slash your price for free: If you offer a discount, pair it with a trade-off (e.g., buying a 2-pack, annual plan, or leaving a review).',
+            'When you spot a Buying Signal (questions about delivery time, warranty, or payment methods), stop pitching and ask for the order.'
+          ],
+          checklist: [
+            { id: 's4_c1', text: 'Prepare written LAER responses for the 4 universal objections: Price, Competitor, Delay ("Think about it"), and Trust.' },
+            { id: 's4_c2', text: 'Train sellers to use the Alternative Choice Close ("Option A or Option B?") instead of yes/no questions.' },
+            { id: 's4_c3', text: 'Add trust accelerators at checkout (Verified reviews, clear return policy, and multiple payment options).' },
+            { id: 's4_c4', text: 'Set up an automated Cart / Chat Recovery message within 2 hours for hesitant shoppers.' }
+          ]
+        },
+        {
+          id: 5,
+          slideNum: 6,
+          code: 'STAGE 05 • LOCK-IN',
+          shortTitle: 'Post-Sale Lock-In',
+          fullTitle: 'Stage 5: Post-Sale Follow-Up, Customer Lock-In & Repeat Sales Flywheel',
+          phaseBadge: 'Lifetime Retention Guarantee',
+          courseTieIn: 'Coursera Module 4: Golden Rules for Successful Sales — Post-Sale Care, Cross-Selling & Loyalty',
+          summary: 'Acquiring a new buyer costs 5x–7x more than retaining an existing one. By executing a structured Day 1 to Day 90 follow-up cadence, you eliminate buyer\'s remorse and lock in repeat sales forever.',
+          categoryExamples: {
+            ecommerce: {
+              pricing: 'Day 1: Order care guide | Day 3: Delivery check-in | Day 14: Review reward | Day 30: Complementary Cross-Sell.',
+              strategy: 'Lock-In Mechanism: VIP Loyalty Points + personalized restock/matching item offer (e.g., 20% off next order credit).'
+            },
+            digital: {
+              pricing: 'Day 1: Quick-start video | Day 3: Activation check | Day 14: Pro workflow tip | Day 30: Pro Tier / Team Upsell.',
+              strategy: 'Lock-In Mechanism: Stored templates, data history, and grandfathered renewal pricing that make switching costly.'
+            },
+            services: {
+              pricing: 'Day 1: Welcome roadmap | Day 7: First milestone win | Day 14: Testimonial capture | Day 30: Monthly Retainer pitch.',
+              strategy: 'Lock-In Mechanism: Priority VIP turnaround and quarterly strategy reviews for ongoing retainer clients.'
+            },
+            subscription: {
+              pricing: 'Day 1: Unboxing guide | Day 7: Taste/usage check | Day 21: Next-box sneak peek + 1-click add-on boost.',
+              strategy: 'Lock-In Mechanism: Streak rewards (free bonus gift on 3rd & 6th box) + referral credits for inviting friends.'
+            }
+          },
+          proTips: [
+            'The First 72 Hours Rule: Reach out on Day 3 to ensure the customer received and successfully used their purchase—this crushes churn.',
+            'Pitch Cross-Sells right after a "Customer Win": When the buyer is thrilled with their first order (Day 14–30), offer a complementary upgrade.',
+            'Turn buyers into salespeople: Reward every 5-star review or friend referral with store credit that brings them back for their next purchase.'
+          ],
+          checklist: [
+            { id: 's5_c1', text: 'Automate a Day-1 Welcome & Usage Guide message so the buyer gets maximum value from their purchase.' },
+            { id: 's5_c2', text: 'Schedule a proactive Day-3 Check-In to confirm delivery/activation and solve any friction early.' },
+            { id: 's5_c3', text: 'Launch a Day-14 Review Request + Day-30 Complementary Cross-Sell / VIP Upgrade offer.' },
+            { id: 's5_c4', text: 'Create a VIP Repeat-Buyer & Referral Reward program (Store credits, member perks, or renewal lock-in).' }
+          ]
+        }
+      ];
+
+      const RETENTION_TIMELINE = [
+        {
+          day: 'Day 1',
+          title: 'Instant Welcome & Buyer\'s Remorse Shield',
+          goal: 'Reassure the customer immediately after payment and help them get a fast first win.',
+          kpi: '100% Open Rate • Zero Cancellations',
+          scriptTemplate: 'Hi {{client}}! 🎉 Thank you for choosing {{store}}! Your order/access is confirmed. Here is a quick 60-second guide to get the absolute best results right away. Reply anytime if you need anything!'
+        },
+        {
+          day: 'Day 3',
+          title: 'Proactive Delivery & Activation Check-In',
+          goal: 'Verify they received and started using the product—solving any small issue before it becomes a complaint.',
+          kpi: '>90% Customer Satisfaction Score',
+          scriptTemplate: 'Hey {{client}}, quick check-in from {{store}}! Just making sure everything arrived smoothly and you\'ve had a chance to try it out. How is everything working for you so far?'
+        },
+        {
+          day: 'Day 7',
+          title: 'Value Reinforcement & Pro Usage Tip',
+          goal: 'Help the buyer unlock hidden value so your product becomes part of their weekly routine.',
+          kpi: 'High Repeat Engagement',
+          scriptTemplate: 'Hi {{client}}! 💡 Wanted to share a quick pro tip that our top {{store}} customers use to get 2x better results from their purchase: [Tip/Link]. Hope you love it!'
+        },
+        {
+          day: 'Day 14',
+          title: 'Peak-Happiness Review & Social Proof Capture',
+          goal: 'Collect a 5-star review when customer excitement is highest, and reward them with a next-order credit.',
+          kpi: '35%+ Review Conversion Rate',
+          scriptTemplate: 'Hey {{client}}! We\'re so glad you\'re part of the {{store}} family. Could you spare 30 seconds to share your honest feedback? As a thank-you, we\'ll add a $15 VIP credit to your account for your next order!'
+        },
+        {
+          day: 'Day 30',
+          title: 'Tailored Cross-Sell & VIP Upgrade Offer',
+          goal: 'Trigger the second purchase by recommending a complementary item or bundle upgrade.',
+          kpi: '25%–40% Repeat Order Conversion',
+          scriptTemplate: 'Hi {{client}}! Since you loved your first purchase at {{store}}, we unlocked an exclusive existing-member 20% privilege on our matching Pro Bundle / Refill Pack for the next 48 hours. Want me to reserve one for you?'
+        },
+        {
+          day: 'Day 90+',
+          title: 'VIP Lock-In & Referral Ambassador Loop',
+          goal: 'Turn loyal buyers into permanent subscribers and brand ambassadors.',
+          kpi: '85%+ Annual Retention',
+          scriptTemplate: 'Hey {{client}}! You\'re officially in the {{store}} VIP Inner Circle. You now have permanent priority perks, plus your personal referral link—give friends 15% off and earn $25 credit every time they order!'
+        }
+      ];
+
+      const COURSE_MODULES = [
+        {
+          id: 'm1',
+          badge: 'Module 01 • 1 Hour',
+          title: 'Introduction to Professional Selling',
+          coreFocus: 'Shifting from pushy product peddling to consultative value creation for any business.',
+          keyTakeaways: [
+            'Selling is a win-win problem-solving consultation, not manipulation.',
+            'Perceived Value must clearly exceed the price asked (The Value Gap).',
+            'Preparation is 50% of victory: Know your product, your market, and your customer personas.'
+          ],
+          storeApplication: 'Applied on Slide 2 (Stage 1): 3-tier pricing, healthy margins, and risk-reversal guarantees.'
+        },
+        {
+          id: 'm2',
+          badge: 'Module 02 • 1 Hour',
+          title: 'Effective Communication Skills in Sales',
+          coreFocus: 'Active listening (70/30 rule), empathy mapping, and open-ended diagnostic questions.',
+          keyTakeaways: [
+            'Let the customer talk 70% of the time; use your 30% to ask diagnostic SPIN questions.',
+            'Uncover both rational needs (specs/budget) and emotional motives (security, status, ease).',
+            'Adapt your communication speed and tone to match the buyer\'s personality.'
+          ],
+          storeApplication: 'Applied on Slide 3 (Stage 2): Consultative chat scripts, intake quizzes, and buyer qualification.'
+        },
+        {
+          id: 'm3',
+          badge: 'Module 03 • 2 Hours',
+          title: 'The Professional Selling Steps',
+          coreFocus: 'Structured progression: Prospecting → Approach → Needs → FAB Pitch → Objections → Close.',
+          keyTakeaways: [
+            'Never pitch price before diagnosing need and building value.',
+            'Translate every Feature → Advantage → Benefit (FAB) so the buyer sees their personal win.',
+            'Use Trial Closes and Alternative Choice Closes to make saying "Yes" natural.'
+          ],
+          storeApplication: 'Applied on Slides 4, 5 & 7: Live FAB Pitch Builder and LAER Objection Battlecards.'
+        },
+        {
+          id: 'm4',
+          badge: 'Module 04 • 1 Hour',
+          title: 'Golden Rules & Post-Sale Retention',
+          coreFocus: 'Long-term relationship management, ethical negotiation, and repeat business lock-in.',
+          keyTakeaways: [
+            'Checkout is the beginning of the relationship—repeat customers generate the highest profit.',
+            'Proactive follow-up in the first 72 hours eliminates buyer\'s remorse and refunds.',
+            'Delighted customers become your best marketing channel through reviews and referrals.'
+          ],
+          storeApplication: 'Applied on Slides 6 & 7: The 90-Day Post-Sale Lock-In Timeline & LTV Revenue Simulator.'
+        }
+      ];
+
+      const GOLDEN_RULES = [
+        {
+          num: '01',
+          title: 'Sell the Benefit, Never Just the Feature',
+          amateur: 'Lists raw specifications and expects the shopper to figure out why they matter.',
+          pro: 'Uses FAB to show how the product saves time, makes money, or improves life.',
+          tag: 'FAB Pitch'
+        },
+        {
+          num: '02',
+          title: 'Listen 70%, Speak 30% (Diagnose First)',
+          amateur: 'Pushes products immediately without asking what the customer actually needs.',
+          pro: 'Asks 3–4 open-ended discovery questions first so the customer feels understood.',
+          tag: 'Discovery'
+        },
+        {
+          num: '03',
+          title: 'Welcome Objections as Requests for Clarity',
+          amateur: 'Gets defensive or argues when a buyer says "It\'s expensive" or "I\'ll think about it."',
+          pro: 'Uses LAER (Listen, Acknowledge, Explore, Respond) to resolve the hidden fear.',
+          tag: 'Objections'
+        },
+        {
+          num: '04',
+          title: 'Protect Your Price—Never Discount for Free',
+          amateur: 'Drops the price immediately, destroying brand trust and profit margins.',
+          pro: 'Re-anchors value first, or trades a discount for a bundle/annual commitment.',
+          tag: 'Margins'
+        },
+        {
+          num: '05',
+          title: 'Kill Buyer\'s Remorse in the First 72 Hours',
+          amateur: 'Goes silent after payment, leaving the customer anxious until delivery/setup.',
+          pro: 'Sends an instant welcome guide on Day 1 and a proactive check-in on Day 3.',
+          tag: 'Retention'
+        },
+        {
+          num: '06',
+          title: 'Use Small Micro-Commitments',
+          amateur: 'Asks for a big purchase cold with zero prior engagement.',
+          pro: 'Guides the buyer through easy steps (quiz, sample, free preview) first.',
+          tag: 'Conversion'
+        },
+        {
+          num: '07',
+          title: 'Close with Alternative Choices, Not Yes/No',
+          amateur: 'Ends the pitch by asking "Do you want to buy this or not?"',
+          pro: 'Asks "Would the Standard Package or the Best-Seller Bundle suit you better?"',
+          tag: 'Closing'
+        },
+        {
+          num: '08',
+          title: 'Cross-Sell Right After the First Win',
+          amateur: 'Pushes random upsells before the buyer has even enjoyed their first order.',
+          pro: 'Pitches complementary add-ons at Day 14–30 when satisfaction is at 100%.',
+          tag: 'LTV Growth'
+        },
+        {
+          num: '09',
+          title: 'Under-Promise and Over-Deliver',
+          amateur: 'Exaggerates claims to get a quick sale, leading to refunds and bad reviews.',
+          pro: 'Sets honest expectations and surprises the buyer with fast delivery or a bonus.',
+          tag: 'Trust'
+        },
+        {
+          num: '10',
+          title: 'Systematize Reviews & Referrals',
+          amateur: 'Hopes happy customers will remember to tell their friends on their own.',
+          pro: 'Automates a Day-14 review reward and a Day-30 VIP referral credit link.',
+          tag: 'Flywheel'
+        }
+      ];
+
+      const FAB_PRESETS = {
+        ecom_fast: {
+          product: 'Flagship Store Collection',
+          persona: 'Quality-Conscious Online Shoppers',
+          feature: 'Premium certified materials with tracked 24-hour express dispatch and 30-day free exchange',
+          advantage: 'Eliminates shipping delays and sizing/quality uncertainty when ordering online',
+          benefit: 'You enjoy your purchase tomorrow with 100% confidence and zero buyer\'s remorse'
+        },
+        saas_auto: {
+          product: 'SmartStore Cloud Suite',
+          persona: 'Busy Entrepreneurs & Teams',
+          feature: '1-click automated workflow sync with military-grade local & cloud backup',
+          advantage: 'Cuts manual setup and repetitive daily admin tasks by 80% without coding',
+          benefit: 'You save 10+ hours every week and focus purely on growing your revenue'
+        },
+        service_vip: {
+          product: 'Pro Growth Agency Package',
+          persona: 'Brands Scaling Online Sales',
+          feature: 'Dedicated 48-hour turnaround sprint with conversion-tested templates',
+          advantage: 'Launches your store campaigns 4x faster than traditional agencies',
+          benefit: 'You start capturing high-intent paying clients this week instead of waiting months'
+        },
+        sub_loyalty: {
+          product: 'VIP Monthly Refill Club',
+          persona: 'Daily Essentials & Wellness Buyers',
+          feature: 'Flexible auto-delivery schedule with 20% member savings and 1-click skip anytime',
+          advantage: 'Guarantees fresh stock at your door right when you need it with zero commitment risk',
+          benefit: 'You never run out of your daily favorites while saving $240+ every year'
+        }
+      };
+
+      const OBJECTIONS_DATA = [
+        {
+          id: 'obj_price',
+          label: '💰 "The price is higher than I expected."',
+          hiddenFear: 'The shopper hasn\'t connected the price to the long-term value, durability, or ROI.',
+          laerSteps: {
+            listen: 'Pause, nod, and let the customer finish expressing their budget concern without interrupting.',
+            acknowledge: '"I completely understand—you want to make sure every dollar you spend gives you real value."',
+            explore: '"Aside from the price, is this the exact product/solution you were hoping to find today?"',
+            respond: 'Break down the cost-per-use or ROI over 12 months, and highlight your warranty/risk-free guarantee.'
+          },
+          closingQuestion: 'Alternative Close: "Would you prefer to start with the Starter Package today, or grab the Best-Seller Bundle to save 20% per unit?"',
+          winRate: '80% Conversion'
+        },
+        {
+          id: 'obj_competitor',
+          label: '🔄 "I saw a cheaper option at another store."',
+          hiddenFear: 'They wonder if your store\'s extra quality, support, and guarantee justify the difference.',
+          laerSteps: {
+            listen: 'Hear out what alternative they are comparing you to without bashing the competitor.',
+            acknowledge: '"It\'s smart to compare options before making a decision."',
+            explore: '"When you looked at that other option, did it include express replacement, verified quality, and Day-3 support?"',
+            respond: 'Show the hidden cost of cheap alternatives (replacements, zero support, delays) vs. your store\'s total peace of mind.'
+          },
+          closingQuestion: 'Trial Close: "Why not test our risk-free guarantee today—if you don\'t see the quality difference immediately, we cover the return 100%?"',
+          winRate: '74% Conversion'
+        },
+        {
+          id: 'obj_think',
+          label: '⏳ "I need to think about it / decide later."',
+          hiddenFear: 'Either a hidden unvoiced objection (price/fit) or lack of a clear reason to act today.',
+          laerSteps: {
+            listen: 'Respect their space calmly so they don\'t feel pressured.',
+            acknowledge: '"Of course—taking a moment to be sure makes total sense."',
+            explore: '"Just so I can give you the right info, is it more about whether the product fits your needs, or the timing of the order?"',
+            respond: 'Resolve the specific question and offer a time-sensitive bonus or cart reservation so they don\'t lose out.'
+          },
+          closingQuestion: 'Reservation Close: "Let me lock in your current bundle bonus in your cart for 24 hours so you don\'t lose the member rate—what\'s your best email/WhatsApp?"',
+          winRate: '72% Conversion'
+        },
+        {
+          id: 'obj_trust',
+          label: '🛡️ "What if it doesn\'t work as promised?"',
+          hiddenFear: 'Fear of buyer\'s remorse or being ignored after paying.',
+          laerSteps: {
+            listen: 'Listen empathetically to any past disappointing online shopping experiences they had.',
+            acknowledge: '"Many of our most loyal customers felt the exact same way before their first order (Feel-Felt-Found)."',
+            explore: '"What would make you feel 100% safe trying this out today?"',
+            respond: 'Walk them through your Stage 5 Post-Sale Promise: instant tracking/access, Day-3 personal check-in, and hassle-free guarantee.'
+          },
+          closingQuestion: 'Assurance Close: "Since you\'re fully protected by our 30-day guarantee and Day-3 check-in, shall we send your order to express dispatch now?"',
+          winRate: '85% Conversion'
+        }
+      ];
+
+      // ==========================================
+      // 2. STATE VARIABLES
+      // ==========================================
+
+      let currentSlide = 1; // 1..8 (or 0 for 'View All Slides')
+      let activeStoreCategory = 'ecommerce';
+      let customStoreName = 'My Flagship Store';
+      let activeRetentionDayIdx = 0;
+      let activeLabTab = 'fab';
+      let activeObjectionId = 'obj_price';
+      let activeModuleFilter = 'all';
+      let checkedItems = {};
+      let retentionChartInstance = null;
+
+      try {
+        const saved = localStorage.getItem('universalStoreSalesDeck_chk_v2');
+        if (saved) {
+          checkedItems = JSON.parse(saved) || {};
+        } else {
+          checkedItems = { s1_c1: true, s1_c2: true, s2_c1: true };
+        }
+      } catch (e) {
+        checkedItems = { s1_c1: true, s1_c2: true, s2_c1: true };
+      }
+
+      function saveChecklistState() {
+        try {
+          localStorage.setItem('universalStoreSalesDeck_chk_v2', JSON.stringify(checkedItems));
+        } catch (e) {}
+      }
+
+      // ==========================================
+      // 3. UTILITY FUNCTIONS
+      // ==========================================
+
+      function escapeHtml(str) {
+        return String(str || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function showToast(message, type) {
+        const container = document.getElementById('toastContainer');
+        if (!container) return;
+        const toast = document.createElement('div');
+        const borderColor = type === 'amber' ? 'border-amber-400' : 'border-emerald-500';
+        const badgeColor = type === 'amber' ? 'text-amber-700' : 'text-emerald-700';
+
+        toast.className = `pointer-events-auto bg-white border-2 ${borderColor} rounded-2xl p-3.5 shadow-xl flex items-center gap-2.5 transform transition-all duration-300 translate-y-2 opacity-0`;
+        toast.innerHTML = `
+          <span class="${badgeColor} font-extrabold text-sm">✓</span>
+          <p class="text-xs font-bold text-slate-800 flex-1">${escapeHtml(message)}</p>
+        `;
+        container.appendChild(toast);
+
+        requestAnimationFrame(() => {
+          toast.classList.remove('translate-y-2', 'opacity-0');
+        });
+
+        setTimeout(() => {
+          toast.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(() => {
+            if (toast.parentNode) toast.parentNode.removeChild(toast);
+          }, 300);
+        }, 2500);
+      }
+
+      function copyTextToClipboard(text, successMsg) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast(successMsg || 'Copied to clipboard!', 'emerald');
+          }).catch(() => {
+            fallbackCopy(text, successMsg);
+          });
+        } else {
+          fallbackCopy(text, successMsg);
+        }
+      }
+
+      function fallbackCopy(text, successMsg) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          showToast(successMsg || 'Copied to clipboard!', 'emerald');
+        } catch (e) {
+          showToast('Ready to copy.', 'amber');
+        }
+        document.body.removeChild(ta);
+      }
+
+      // ==========================================
+      // 4. SLIDE NAVIGATION & RENDERING
+      // ==========================================
+
+      function updateReadinessProgress() {
+        const totalItems = STAGES_DATA.reduce((acc, st) => acc + st.checklist.length, 0);
+        const completedCount = Object.values(checkedItems).filter(Boolean).length;
+        const pct = totalItems > 0 ? Math.round((completedCount / totalItems) * 100) : 0;
+
+        const headerBadge = document.getElementById('headerScoreBadge');
+        const heroText = document.getElementById('heroProgressText');
+        const heroBar = document.getElementById('heroProgressBar');
+
+        if (headerBadge) headerBadge.textContent = `${pct}%`;
+        if (heroText) heroText.textContent = `${completedCount} / ${totalItems} Completed (${pct}%)`;
+        if (heroBar) heroBar.style.width = `${pct}%`;
+      }
+
+      function renderSlideNavPills() {
+        const container = document.getElementById('slideNavPills');
+        if (!container) return;
+
+        container.innerHTML = SLIDES_META.map((sl) => {
+          const isActive = currentSlide === sl.num;
+          return `
+            <button
+              type="button"
+              data-goto-slide="${sl.num}"
+              class="slide-pill-btn px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition flex items-center gap-1.5 ${
+                isActive
+                  ? 'bg-emerald-600 text-white shadow-sm'
+                  : 'bg-slate-100 text-slate-700 hover:text-slate-900 hover:bg-slate-200 border border-slate-200'
+              }"
+            >
+              <span>${sl.label}</span>
+            </button>
+          `;
+        }).join('');
+
+        container.querySelectorAll('.slide-pill-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const target = parseInt(btn.getAttribute('data-goto-slide'), 10);
+            goToSlide(target);
+          });
+        });
+
+        const mobileSelect = document.getElementById('mobileSlideSelect');
+        if (mobileSelect) {
+          mobileSelect.value = String(currentSlide);
+        }
+      }
+
+      function renderOverviewStageCards() {
+        const container = document.getElementById('overviewStageCards');
+        if (!container) return;
+
+        container.innerHTML = STAGES_DATA.map((st) => {
+          const doneCount = st.checklist.filter((c) => checkedItems[c.id]).length;
+          const total = st.checklist.length;
+          return `
+            <button
+              type="button"
+              data-jump-slide="${st.slideNum}"
+              class="airy-card text-left p-4 rounded-2xl flex flex-col justify-between gap-3 group cursor-pointer"
+            >
+              <div class="flex items-center justify-between w-full">
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 group-hover:translate-x-0.5 transition">
+                  Stage 0${st.id} →
+                </span>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  ${doneCount}/${total}
+                </span>
+              </div>
+              <div>
+                <p class="text-sm font-extrabold text-slate-900">${st.shortTitle}</p>
+                <p class="text-xs text-slate-500 mt-0.5">${st.phaseBadge}</p>
+              </div>
+            </button>
+          `;
+        }).join('');
+
+        container.querySelectorAll('[data-jump-slide]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            goToSlide(parseInt(btn.getAttribute('data-jump-slide'), 10));
+          });
+        });
+      }
+
+      function renderStageSlideContent(stagesToRender) {
+        const container = document.getElementById('slide-stage-container');
+        if (!container) return;
+
+        const profileInfo = STORE_PROFILES[activeStoreCategory] || STORE_PROFILES.ecommerce;
+        const safeStoreName = escapeHtml(customStoreName || 'Your Store');
+
+        container.innerHTML = stagesToRender.map((st) => {
+          const catExample = st.categoryExamples[activeStoreCategory] || st.categoryExamples.ecommerce;
+          const isStage5 = st.id === 5;
+
+          return `
+            <div class="slide-surface print-page-break rounded-3xl p-5 sm:p-10 space-y-6 sm:space-y-8 slide-fade-enter">
+              <!-- Stage Slide Header -->
+              <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-200 pb-6">
+                <div class="space-y-2.5 max-w-3xl">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-600 text-white">
+                      Slide ${st.slideNum} of 8 • ${st.code}
+                    </span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-200">
+                      🎓 ${st.courseTieIn}
+                    </span>
+                  </div>
+                  <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+                    ${st.fullTitle}
+                  </h2>
+                  <p class="text-xs sm:text-base text-slate-600 leading-relaxed">
+                    ${st.summary}
+                  </p>
+                </div>
+
+                <!-- Store Context Badge -->
+                <div class="subtle-box rounded-2xl p-3.5 sm:p-4 shrink-0 self-start lg:self-center">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">Tailored For:</span>
+                  <p class="text-sm font-extrabold text-emerald-700 mt-0.5">${profileInfo.icon} ${safeStoreName}</p>
+                  <p class="text-xs text-slate-600">${profileInfo.name}</p>
+                </div>
+              </div>
+
+              <!-- Middle Section: Universal Store Application + Golden Pro Tips -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+                <!-- Left 6 Cols: Applied Blueprint for Selected Store Category -->
+                <div class="lg:col-span-6 airy-card rounded-2xl p-5 sm:p-6 space-y-4 border-2 border-emerald-500/20">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-800">
+                      ${profileInfo.icon} How ${safeStoreName} Executes Stage ${st.id}
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-lg text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                      ${profileInfo.name}
+                    </span>
+                  </div>
+
+                  <div class="space-y-3">
+                    <div class="p-3.5 sm:p-4 rounded-xl bg-slate-50 border border-slate-200">
+                      <p class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Core Structure &amp; Focus:</p>
+                      <p class="text-xs sm:text-sm font-bold text-slate-900 leading-relaxed">${catExample.pricing}</p>
+                    </div>
+
+                    <div class="p-3.5 sm:p-4 rounded-xl bg-emerald-50/70 border border-emerald-200">
+                      <p class="text-[11px] font-extrabold text-emerald-800 uppercase tracking-wider mb-1">Actionable Execution Strategy:</p>
+                      <p class="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">${catExample.strategy}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right 6 Cols: Golden Pro Tips for the Seller -->
+                <div class="lg:col-span-6 airy-card rounded-2xl p-5 sm:p-6 space-y-4">
+                  <h3 class="text-xs font-extrabold uppercase tracking-wider text-amber-800 flex items-center gap-2">
+                    <span>💡</span> Golden Rules &amp; Seller Advice (Stage ${st.id})
+                  </h3>
+                  <ul class="space-y-3">
+                    ${st.proTips.map((tip) => `
+                      <li class="flex items-start gap-3 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                        <span class="w-6 h-6 rounded-lg bg-amber-100 border border-amber-300 text-amber-800 font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                          ★
+                        </span>
+                        <span>${tip}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+              </div>
+
+              ${isStage5 ? `
+                <!-- Stage 5 Special Interactive Feature: The 90-Day Customer Lock-In Timeline -->
+                <div class="airy-card rounded-2xl p-5 sm:p-6 border-2 border-amber-400/40 bg-amber-50/20 space-y-5">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <span class="text-xs font-extrabold uppercase tracking-wider text-amber-800">
+                        🔒 Interactive Post-Sale Customer Lock-In Playbook
+                      </span>
+                      <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-0.5">
+                        The 90-Day Follow-Up Cadence (Tap Any Day to Copy Script)
+                      </h3>
+                    </div>
+                    <div class="flex items-center gap-2 no-print">
+                      <label for="templateClientName" class="text-xs font-bold text-slate-700">Customer Name:</label>
+                      <input type="text" id="templateClientName" value="Alex" class="w-28 bg-white border border-slate-300 rounded-xl px-3 py-1.5 text-xs font-bold text-slate-900 focus:outline-none focus:border-emerald-600" />
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 no-print" id="retentionTimelineTabs"></div>
+                  <div id="retentionMilestoneCard" class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-sm"></div>
+                </div>
+              ` : ''}
+
+              <!-- Stage Action Checklist -->
+              <div class="pt-4 border-t border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-emerald-800">
+                    ✅ Stage ${st.id} Seller Commitment Checklist
+                  </h3>
+                  <span class="text-[11px] font-medium text-slate-500">Auto-saves progress</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  ${st.checklist.map((item) => {
+                    const isChecked = !!checkedItems[item.id];
+                    return `
+                      <label
+                        for="chk_${item.id}"
+                        class="flex items-start gap-3 p-3.5 rounded-xl border cursor-pointer transition ${
+                          isChecked
+                            ? 'bg-emerald-50 border-emerald-400 text-slate-900'
+                            : 'bg-slate-50/70 border-slate-200 text-slate-700 hover:border-slate-300'
+                        }"
+                      >
+                        <input
+                          type="checkbox"
+                          id="chk_${item.id}"
+                          data-check-id="${item.id}"
+                          ${isChecked ? 'checked' : ''}
+                          class="stage-check-input mt-0.5 w-4 h-4 rounded accent-emerald-600 cursor-pointer shrink-0"
+                        />
+                        <span class="text-xs sm:text-sm font-medium leading-relaxed ${isChecked ? 'line-through text-emerald-800' : ''}">
+                          ${item.text}
+                        </span>
+                      </label>
+                    `;
+                  }).join('')}
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        // Bind checklist checkboxes
+        container.querySelectorAll('.stage-check-input').forEach((input) => {
+          input.addEventListener('change', (e) => {
+            const chkId = e.target.getAttribute('data-check-id');
+            checkedItems[chkId] = e.target.checked;
+            saveChecklistState();
+            updateReadinessProgress();
+            renderOverviewStageCards();
+            renderStageSlideContent(stagesToRender);
+            if (e.target.checked) {
+              showToast('Step completed! Readiness score updated.', 'emerald');
+            }
+          });
+        });
+
+        // If Stage 5 is rendered, initialize its interactive 90-day timeline
+        if (stagesToRender.some((s) => s.id === 5)) {
+          renderRetentionTimeline();
+          const clientInput = document.getElementById('templateClientName');
+          if (clientInput) {
+            clientInput.addEventListener('input', renderRetentionTimeline);
+          }
+        }
+      }
+
+      function goToSlide(slideNum) {
+        currentSlide = slideNum;
+
+        const slide1 = document.getElementById('slide-1');
+        const stageContainer = document.getElementById('slide-stage-container');
+        const slide7 = document.getElementById('slide-7');
+        const slide8 = document.getElementById('slide-8');
+
+        [slide1, stageContainer, slide7, slide8].forEach((el) => {
+          if (el) el.classList.add('hidden');
+        });
+
+        if (slideNum === 0) {
+          // View All Slides mode
+          if (slide1) slide1.classList.remove('hidden');
+          if (stageContainer) {
+            stageContainer.classList.remove('hidden');
+            renderStageSlideContent(STAGES_DATA);
+          }
+          if (slide7) slide7.classList.remove('hidden');
+          if (slide8) slide8.classList.remove('hidden');
+          updateLtvSimulation();
+        } else if (slideNum === 1) {
+          if (slide1) slide1.classList.remove('hidden');
+          renderOverviewStageCards();
+        } else if (slideNum >= 2 && slideNum <= 6) {
+          const stObj = STAGES_DATA.find((s) => s.slideNum === slideNum);
+          if (stageContainer && stObj) {
+            stageContainer.classList.remove('hidden');
+            renderStageSlideContent([stObj]);
+          }
+        } else if (slideNum === 7) {
+          if (slide7) slide7.classList.remove('hidden');
+          updateLtvSimulation();
+        } else if (slideNum === 8) {
+          if (slide8) slide8.classList.remove('hidden');
+        }
+
+        // Update top progress bar & bottom dock
+        const pct = slideNum === 0 ? 100 : Math.round((slideNum / 8) * 100);
+        const topBar = document.getElementById('topSlideProgressBar');
+        if (topBar) topBar.style.width = `${pct}%`;
+
+        const meta = SLIDES_META.find((m) => m.num === slideNum);
+        const bottomTitle = document.getElementById('bottomSlideTitle');
+        if (bottomTitle) {
+          bottomTitle.textContent = meta ? meta.fullTitle : 'All 8 Slides Expanded (Full Overview Mode)';
+        }
+
+        const toggleAllBtn = document.getElementById('toggleAllSlidesBtn');
+        if (toggleAllBtn) {
+          toggleAllBtn.textContent = slideNum === 0 ? 'Single Slide Mode' : 'View All Slides';
+        }
+
+        const prevBtn = document.getElementById('prevSlideBtn');
+        const nextBtn = document.getElementById('nextSlideBtn');
+        if (prevBtn) prevBtn.disabled = slideNum === 1;
+        if (nextBtn) {
+          nextBtn.innerHTML = slideNum === 8
+            ? '<span>Restart</span><span>↺</span>'
+            : '<span>Next</span><span>→</span>';
+        }
+
+        renderSlideNavPills();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Expose helper for inline funnel clicks
+      window.deckGoToSlide = goToSlide;
+
+      // ==========================================
+      // 5. RETENTION TIMELINE, FAB, OBJECTIONS & LTV
+      // ==========================================
+
+      function renderRetentionTimeline() {
+        const tabsContainer = document.getElementById('retentionTimelineTabs');
+        const cardContainer = document.getElementById('retentionMilestoneCard');
+        if (!tabsContainer || !cardContainer) return;
+
+        const clientName = escapeHtml((document.getElementById('templateClientName')?.value || 'Alex').trim());
+        const storeName = escapeHtml((customStoreName || 'Our Store').trim());
+
+        tabsContainer.innerHTML = RETENTION_TIMELINE.map((item, idx) => {
+          const isActive = idx === activeRetentionDayIdx;
+          return `
+            <button
+              type="button"
+              data-day-idx="${idx}"
+              class="ret-day-btn px-2.5 py-2 rounded-xl text-xs font-extrabold border transition text-center ${
+                isActive
+                  ? 'bg-amber-500 text-slate-950 border-amber-500 shadow-sm'
+                  : 'bg-white text-slate-700 border-slate-300 hover:border-slate-400'
+              }"
+            >
+              ${item.day}
+            </button>
+          `;
+        }).join('');
+
+        tabsContainer.querySelectorAll('.ret-day-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            activeRetentionDayIdx = parseInt(btn.getAttribute('data-day-idx'), 10);
+            renderRetentionTimeline();
+          });
+        });
+
+        const item = RETENTION_TIMELINE[activeRetentionDayIdx] || RETENTION_TIMELINE[0];
+        const msg = item.scriptTemplate
+          .replace(/\{\{client\}\}/g, clientName)
+          .replace(/\{\{store\}\}/g, storeName);
+
+        cardContainer.innerHTML = `
+          <div class="space-y-3.5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+              <div>
+                <span class="text-xs font-extrabold text-amber-800 uppercase">${item.day} Retention Milestone</span>
+                <h4 class="text-base sm:text-lg font-extrabold text-slate-900">${item.title}</h4>
+              </div>
+              <span class="px-3 py-1 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 self-start sm:self-auto">
+                Target: ${item.kpi}
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700"><strong>Goal:</strong> ${item.goal}</p>
+            <div class="p-3.5 sm:p-4 rounded-xl bg-slate-50 border border-emerald-300 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-extrabold text-emerald-800">💬 Ready-to-Send Customer Message:</span>
+                <button type="button" id="copyRetentionMsgBtn" class="px-3 py-1 rounded-lg text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700 transition no-print">
+                  Copy Script
+                </button>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-800 italic leading-relaxed">"${msg}"</p>
+            </div>
+          </div>
+        `;
+
+        const copyBtn = document.getElementById('copyRetentionMsgBtn');
+        if (copyBtn) {
+          copyBtn.addEventListener('click', () => {
+            copyTextToClipboard(msg, `${item.day} retention script copied!`);
+          });
+        }
+      }
+
+      function updateFabPitchOutput() {
+        const prod = escapeHtml((document.getElementById('fabProductInput')?.value || customStoreName).trim());
+        const persona = escapeHtml((document.getElementById('fabPersonaInput')?.value || 'valued customers').trim());
+        const feat = escapeHtml((document.getElementById('fabFeatureInput')?.value || '').trim());
+        const adv = escapeHtml((document.getElementById('fabAdvantageInput')?.value || '').trim());
+        const ben = escapeHtml((document.getElementById('fabBenefitInput')?.value || '').trim());
+
+        const outputEl = document.getElementById('fabGeneratedOutput');
+        if (!outputEl) return;
+
+        outputEl.innerHTML = `"Crafted specifically for <strong class="text-slate-900">${persona}</strong>, <strong class="text-emerald-700">${prod}</strong> includes <span class="underline decoration-emerald-500/60 font-medium">${feat}</span>. Because of this, it <span class="text-indigo-700 font-semibold">${adv}</span>—which means for you, <strong class="text-emerald-800">${ben}</strong>. Would you like to experience this risk-free today?"`;
+      }
+
+      function renderObjectionBattlecards() {
+        const btnContainer = document.getElementById('objectionButtonsContainer');
+        const detailCard = document.getElementById('objectionDetailCard');
+        if (!btnContainer || !detailCard) return;
+
+        btnContainer.innerHTML = OBJECTIONS_DATA.map((obj) => {
+          const isSelected = obj.id === activeObjectionId;
+          return `
+            <button
+              type="button"
+              data-obj-id="${obj.id}"
+              class="obj-select-btn w-full text-left px-4 py-3 rounded-xl text-xs sm:text-sm font-bold border transition ${
+                isSelected
+                  ? 'bg-slate-900 text-white border-slate-900 shadow-sm'
+                  : 'bg-white text-slate-800 border-slate-300 hover:bg-slate-50'
+              }"
+            >
+              ${obj.label}
+            </button>
+          `;
+        }).join('');
+
+        btnContainer.querySelectorAll('.obj-select-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            activeObjectionId = btn.getAttribute('data-obj-id');
+            renderObjectionBattlecards();
+          });
+        });
+
+        const selectedObj = OBJECTIONS_DATA.find((o) => o.id === activeObjectionId) || OBJECTIONS_DATA[0];
+
+        detailCard.innerHTML = `
+          <div class="airy-card rounded-2xl p-5 sm:p-7 space-y-5">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-4">
+              <div>
+                <span class="text-xs font-extrabold uppercase tracking-wider text-amber-800">Hidden Buyer Hesitation:</span>
+                <p class="text-sm font-bold text-slate-900 mt-0.5">${selectedObj.hiddenFear}</p>
+              </div>
+              <span class="px-3 py-1 rounded-xl text-xs font-extrabold bg-emerald-50 text-emerald-800 border border-emerald-200 shrink-0">
+                ${selectedObj.winRate}
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs sm:text-sm">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="text-emerald-700 block mb-1">1. Listen:</strong>
+                <span class="text-slate-700">${selectedObj.laerSteps.listen}</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="text-teal-700 block mb-1">2. Acknowledge:</strong>
+                <span class="text-slate-700">${selectedObj.laerSteps.acknowledge}</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="text-amber-800 block mb-1">3. Explore (Isolate):</strong>
+                <span class="text-slate-700">${selectedObj.laerSteps.explore}</span>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <strong class="text-indigo-700 block mb-1">4. Respond (Re-Anchor):</strong>
+                <span class="text-slate-700">${selectedObj.laerSteps.respond}</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <p class="text-xs sm:text-sm text-slate-900 leading-relaxed">
+                <strong class="text-emerald-800">Closing Question:</strong> ${selectedObj.closingQuestion}
+              </p>
+              <button
+                type="button"
+                id="copyObjectionScriptBtn"
+                class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700 shrink-0 transition no-print"
+              >
+                Copy Reply
+              </button>
+            </div>
+          </div>
+        `;
+
+        const copyBtn = document.getElementById('copyObjectionScriptBtn');
+        if (copyBtn) {
+          copyBtn.addEventListener('click', () => {
+            const fullScript = `${selectedObj.laerSteps.acknowledge} ${selectedObj.laerSteps.explore} — ${selectedObj.closingQuestion}`;
+            copyTextToClipboard(fullScript, 'LAER Objection Rebuttal copied!');
+          });
+        }
+      }
+
+      function updateLtvSimulation() {
+        const custPerMo = parseInt(document.getElementById('simCustSlider')?.value || '50', 10);
+        const aov = parseInt(document.getElementById('simAovSlider')?.value || '120', 10);
+        const retRate = parseInt(document.getElementById('simRetSlider')?.value || '60', 10) / 100;
+        const crossRate = parseInt(document.getElementById('simCrossSlider')?.value || '30', 10) / 100;
+
+        const custEl = document.getElementById('simCustVal');
+        const aovEl = document.getElementById('simAovVal');
+        const retEl = document.getElementById('simRetVal');
+        const crossEl = document.getElementById('simCrossVal');
+
+        if (custEl) custEl.textContent = `${custPerMo} Buyers / mo`;
+        if (aovEl) aovEl.textContent = `$${aov}`;
+        if (retEl) retEl.textContent = `${Math.round(retRate * 100)}%`;
+        if (crossEl) crossEl.textContent = `${Math.round(crossRate * 100)}%`;
+
+        const monthlyBase = custPerMo * aov;
+        const annualBase = monthlyBase * 12;
+
+        const q1Base = monthlyBase * 3;
+        const q2Base = monthlyBase * 6;
+        const q3Base = monthlyBase * 9;
+        const q4Base = monthlyBase * 12;
+
+        const multiplier = 1 + (retRate * 0.85) + (crossRate * 0.65);
+        const q1Locked = Math.round(q1Base * (1 + (retRate * 0.25)));
+        const q2Locked = Math.round(q2Base * (1 + (retRate * 0.45) + (crossRate * 0.25)));
+        const q3Locked = Math.round(q3Base * (1 + (retRate * 0.65) + (crossRate * 0.45)));
+        const q4Locked = Math.round(annualBase * multiplier);
+
+        const baseRevEl = document.getElementById('simBaseRev');
+        const lockedRevEl = document.getElementById('simLockedRev');
+        const gainBadge = document.getElementById('simNetGainBadge');
+
+        if (baseRevEl) baseRevEl.textContent = `$${annualBase.toLocaleString()} / yr`;
+        if (lockedRevEl) lockedRevEl.textContent = `$${q4Locked.toLocaleString()} / yr`;
+        if (gainBadge) gainBadge.textContent = `+$${(q4Locked - annualBase).toLocaleString()} Extra LTV`;
+
+        // Render Native HTML/CSS Bars (100% immune to CDN blockers & prints cleanly in PDF)
+        const nativeBarsEl = document.getElementById('nativeLtvBars');
+        if (nativeBarsEl) {
+          const maxVal = Math.max(q4Locked, 1);
+          const quarters = [
+            { label: 'Q1 (3 Mos)', base: q1Base, locked: q1Locked },
+            { label: 'Q2 (6 Mos)', base: q2Base, locked: q2Locked },
+            { label: 'Q3 (9 Mos)', base: q3Base, locked: q3Locked },
+            { label: 'Q4 (Full Year)', base: q4Base, locked: q4Locked }
+          ];
+          nativeBarsEl.innerHTML = quarters.map((q) => {
+            const basePct = Math.max(8, Math.round((q.base / maxVal) * 100));
+            const lockPct = Math.max(12, Math.round((q.locked / maxVal) * 100));
+            return `
+              <div class="space-y-1 text-xs">
+                <div class="flex justify-between font-bold text-slate-700">
+                  <span>${q.label}</span>
+                  <span>One-Time: $${q.base.toLocaleString()} vs. <strong class="text-emerald-700">Lock-In: $${q.locked.toLocaleString()}</strong></span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-lg h-3 overflow-hidden flex flex-col gap-0.5 p-0.5">
+                  <div class="bg-emerald-600 h-2 rounded transition-all duration-300" style="width:${lockPct}%"></div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+
+        const ctx = document.getElementById('retentionChart');
+        if (!ctx) return;
+
+        try {
+          if (retentionChartInstance) {
+            retentionChartInstance.data.datasets[0].data = [q1Base, q2Base, q3Base, q4Base];
+            retentionChartInstance.data.datasets[1].data = [q1Locked, q2Locked, q3Locked, q4Locked];
+            retentionChartInstance.update();
+          } else if (typeof Chart !== 'undefined') {
+            retentionChartInstance = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4 (Year)'],
+                datasets: [
+                  {
+                    label: 'One-Time Sales Only ($)',
+                    data: [q1Base, q2Base, q3Base, q4Base],
+                    backgroundColor: '#cbd5e1',
+                    borderColor: '#94a3b8',
+                    borderWidth: 1,
+                    borderRadius: 6
+                  },
+                  {
+                    label: 'With Stage 5 Customer Lock-In ($)',
+                    data: [q1Locked, q2Locked, q3Locked, q4Locked],
+                    backgroundColor: '#059669',
+                    borderColor: '#047857',
+                    borderWidth: 1,
+                    borderRadius: 6
+                  }
+                ]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: {
+                    labels: { color: '#334155', font: { size: 11, weight: 'bold' } }
+                  }
+                },
+                scales: {
+                  x: {
+                    ticks: { color: '#475569', font: { size: 11 } },
+                    grid: { color: '#f1f5f9' }
+                  },
+                  y: {
+                    ticks: {
+                      color: '#475569',
+                      font: { size: 11 },
+                      callback: function (val) {
+                        return '$' + (val / 1000) + 'k';
+                      }
+                    },
+                    grid: { color: '#e2e8f0' }
+                  }
+                }
+              }
+            });
+          }
+        } catch (err) {
+          // Fallback already rendered via #nativeLtvBars
+        }
+      }
+
+      function renderCourseModules() {
+        const container = document.getElementById('courseModulesGrid');
+        if (!container) return;
+
+        const filtered = activeModuleFilter === 'all'
+          ? COURSE_MODULES
+          : COURSE_MODULES.filter((m) => m.id === activeModuleFilter);
+
+        container.innerHTML = filtered.map((mod) => `
+          <div class="airy-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="px-2.5 py-1 rounded-full text-xs font-extrabold bg-amber-50 text-amber-900 border border-amber-200">
+                  ${mod.badge}
+                </span>
+                <span class="text-[11px] font-semibold text-slate-500">Alfaisal University | KLD</span>
+              </div>
+              <h3 class="text-lg font-extrabold text-slate-900">${mod.title}</h3>
+              <p class="text-xs sm:text-sm text-emerald-800 font-bold">${mod.coreFocus}</p>
+              <ul class="space-y-2 pt-1">
+                ${mod.keyTakeaways.map((kt) => `
+                  <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    <span class="text-emerald-600 font-extrabold">✓</span>
+                    <span>${kt}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700">
+              <strong class="text-slate-900">Deck Application:</strong> ${mod.storeApplication}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      function renderGoldenRules(searchQuery) {
+        const container = document.getElementById('goldenRulesContainer');
+        if (!container) return;
+
+        const q = (searchQuery || '').trim().toLowerCase();
+        const filtered = GOLDEN_RULES.filter((r) =>
+          !q ||
+          r.title.toLowerCase().includes(q) ||
+          r.amateur.toLowerCase().includes(q) ||
+          r.pro.toLowerCase().includes(q) ||
+          r.tag.toLowerCase().includes(q)
+        );
+
+        if (filtered.length === 0) {
+          container.innerHTML = `<p class="text-sm text-slate-500 col-span-2 py-6 text-center">No golden rules matched "${escapeHtml(searchQuery)}".</p>`;
+          return;
+        }
+
+        container.innerHTML = filtered.map((rule) => `
+          <div class="airy-card rounded-2xl p-5 space-y-3.5">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-lg bg-slate-900 text-white font-extrabold text-xs flex items-center justify-center shrink-0">
+                  ${rule.num}
+                </span>
+                <h4 class="text-sm font-extrabold text-slate-900">${rule.title}</h4>
+              </div>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200 shrink-0">
+                ${rule.tag}
+              </span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+              <div class="p-3 rounded-xl bg-rose-50/70 border border-rose-200 text-slate-700 leading-relaxed">
+                <span class="font-extrabold text-rose-700 block mb-0.5">✗ Amateur Seller:</span>
+                ${rule.amateur}
+              </div>
+              <div class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200 text-slate-800 leading-relaxed">
+                <span class="font-extrabold text-emerald-800 block mb-0.5">✓ Certified Pro Seller:</span>
+                ${rule.pro}
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // ==========================================
+      // 6. PRINT / PDF PREPARATION HANDLER
+      // ==========================================
+
+      function prepareAllSlidesForPrint() {
+        // Ensure all 5 stages are populated in the stage container before printing
+        renderStageSlideContent(STAGES_DATA);
+        updateLtvSimulation();
+      }
+
+      window.addEventListener('beforeprint', prepareAllSlidesForPrint);
+
+      // ==========================================
+      // 7. EVENT LISTENERS
+      // ==========================================
+
+      function initEvents() {
+        const prevBtn = document.getElementById('prevSlideBtn');
+        const nextBtn = document.getElementById('nextSlideBtn');
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            if (currentSlide > 1) {
+              goToSlide(currentSlide - 1);
+            } else {
+              goToSlide(1);
+            }
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            if (currentSlide >= 1 && currentSlide < 8) {
+              goToSlide(currentSlide + 1);
+            } else {
+              goToSlide(1);
+            }
+          });
+        }
+
+        // Mobile Slide Dropdown Selector
+        const mobileSelect = document.getElementById('mobileSlideSelect');
+        if (mobileSelect) {
+          mobileSelect.addEventListener('change', (e) => {
+            const val = parseInt(e.target.value, 10);
+            goToSlide(val);
+          });
+        }
+
+        // Keyboard Left / Right Arrow Support
+        window.addEventListener('keydown', (e) => {
+          const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+          if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+          if (e.key === 'ArrowRight' && currentSlide >= 1 && currentSlide < 8) {
+            goToSlide(currentSlide + 1);
+          } else if (e.key === 'ArrowLeft' && currentSlide > 1) {
+            goToSlide(currentSlide - 1);
+          }
+        });
+
+        // View All Slides Toggle Button
+        const toggleAllBtn = document.getElementById('toggleAllSlidesBtn');
+        if (toggleAllBtn) {
+          toggleAllBtn.addEventListener('click', () => {
+            if (currentSlide === 0) {
+              goToSlide(1);
+            } else {
+              goToSlide(0);
+              showToast('All 8 slides expanded on one page.', 'emerald');
+            }
+          });
+        }
+
+        // Print / Save PDF Button
+        const printBtn = document.getElementById('printReportBtn');
+        if (printBtn) {
+          printBtn.addEventListener('click', () => {
+            prepareAllSlidesForPrint();
+            goToSlide(0);
+            setTimeout(() => {
+              window.print();
+            }, 250);
+          });
+        }
+
+        // Custom Store Name Input
+        const storeNameInput = document.getElementById('customStoreNameInput');
+        if (storeNameInput) {
+          storeNameInput.addEventListener('input', (e) => {
+            customStoreName = e.target.value.trim() || 'My Store';
+            updateHeroStoreBanner();
+          });
+        }
+
+        // Store Category Profile Buttons
+        document.querySelectorAll('.profile-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            activeStoreCategory = btn.getAttribute('data-profile');
+            document.querySelectorAll('.profile-btn').forEach((b) => {
+              if (b.getAttribute('data-profile') === activeStoreCategory) {
+                b.className = 'profile-btn px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow-sm transition';
+              } else {
+                b.className = 'profile-btn px-3 py-2 rounded-xl text-xs font-semibold bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition';
+              }
+            });
+            updateHeroStoreBanner();
+            if (currentSlide >= 2 && currentSlide <= 6) {
+              const stObj = STAGES_DATA.find((s) => s.slideNum === currentSlide);
+              if (stObj) renderStageSlideContent([stObj]);
+            } else if (currentSlide === 0) {
+              renderStageSlideContent(STAGES_DATA);
+            }
+            const p = STORE_PROFILES[activeStoreCategory];
+            if (p) showToast(`Deck customized for: ${p.name}`, 'emerald');
+          });
+        });
+
+        // Reset Checklist Button
+        const resetBtn = document.getElementById('resetChecklistBtn');
+        if (resetBtn) {
+          resetBtn.addEventListener('click', () => {
+            checkedItems = {};
+            saveChecklistState();
+            updateReadinessProgress();
+            renderOverviewStageCards();
+            if (currentSlide === 0) renderStageSlideContent(STAGES_DATA);
+            showToast('Checklist progress reset to 0%.', 'amber');
+          });
+        }
+
+        // Slide 7 Sub-Tool Tabs
+        document.querySelectorAll('.lab-tab-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            activeLabTab = btn.getAttribute('data-lab-tab');
+            document.querySelectorAll('.lab-tab-btn').forEach((b) => {
+              if (b.getAttribute('data-lab-tab') === activeLabTab) {
+                b.className = 'lab-tab-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow-sm transition text-center';
+              } else {
+                b.className = 'lab-tab-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-900 transition text-center';
+              }
+            });
+
+            document.querySelectorAll('.lab-subpanel').forEach((panel) => {
+              panel.classList.add('hidden');
+            });
+            const activePanel = document.getElementById(`labPanel-${activeLabTab}`);
+            if (activePanel) activePanel.classList.remove('hidden');
+
+            if (activeLabTab === 'ltv') {
+              updateLtvSimulation();
+            }
+          });
+        });
+
+        // FAB Presets & Inputs
+        document.querySelectorAll('.fab-preset-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const key = btn.getAttribute('data-fab');
+            const preset = FAB_PRESETS[key];
+            if (!preset) return;
+
+            document.getElementById('fabProductInput').value = preset.product;
+            document.getElementById('fabPersonaInput').value = preset.persona;
+            document.getElementById('fabFeatureInput').value = preset.feature;
+            document.getElementById('fabAdvantageInput').value = preset.advantage;
+            document.getElementById('fabBenefitInput').value = preset.benefit;
+
+            document.querySelectorAll('.fab-preset-btn').forEach((b) => {
+              if (b.getAttribute('data-fab') === key) {
+                b.className = 'fab-preset-btn px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600 text-white transition text-left';
+              } else {
+                b.className = 'fab-preset-btn px-3 py-2 rounded-xl text-xs font-semibold bg-slate-50 text-slate-700 border border-slate-300 hover:border-emerald-600 transition text-left';
+              }
+            });
+            updateFabPitchOutput();
+            showToast('Loaded universal FAB preset!', 'emerald');
+          });
+        });
+
+        ['fabProductInput', 'fabPersonaInput', 'fabFeatureInput', 'fabAdvantageInput', 'fabBenefitInput'].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.addEventListener('input', updateFabPitchOutput);
+        });
+
+        const copyFabBtn = document.getElementById('copyFabPitchBtn');
+        if (copyFabBtn) {
+          copyFabBtn.addEventListener('click', () => {
+            const text = document.getElementById('fabGeneratedOutput')?.innerText || '';
+            copyTextToClipboard(text, 'FAB Pitch Script copied!');
+          });
+        }
+
+        // Quiz Reflex Buttons
+        document.querySelectorAll('.quiz-opt-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const ans = btn.getAttribute('data-quiz');
+            const badge = document.getElementById('quizResultBadge');
+            const feedback = document.getElementById('quizFeedbackText');
+            if (!badge || !feedback) return;
+
+            feedback.classList.remove('hidden');
+            if (ans === 'correct') {
+              badge.textContent = '✓ Pro Seller Move!';
+              badge.className = 'text-[11px] font-extrabold text-emerald-700';
+              feedback.textContent = 'Correct! Using LAER to listen, empathize, and contrast price against long-term value protects your profit margin.';
+              feedback.className = 'text-xs text-emerald-800 pt-1 font-semibold';
+              showToast('Spot on! Value re-anchoring wins.', 'emerald');
+            } else {
+              badge.textContent = '✗ Try Option B';
+              badge.className = 'text-[11px] font-extrabold text-rose-700';
+              feedback.textContent = 'Avoid instant price-slashing or arguing. Empathize first and re-anchor value (Option B).';
+              feedback.className = 'text-xs text-rose-700 pt-1 font-semibold';
+            }
+          });
+        });
+
+        // LTV Sliders
+        ['simCustSlider', 'simAovSlider', 'simRetSlider', 'simCrossSlider'].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.addEventListener('input', updateLtvSimulation);
+        });
+
+        // Slide 8 Module Filter Tabs
+        document.querySelectorAll('.mod-tab-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            activeModuleFilter = btn.getAttribute('data-mod');
+            document.querySelectorAll('.mod-tab-btn').forEach((b) => {
+              if (b.getAttribute('data-mod') === activeModuleFilter) {
+                b.className = 'mod-tab-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 text-white transition';
+              } else {
+                b.className = 'mod-tab-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-900 transition';
+              }
+            });
+            renderCourseModules();
+          });
+        });
+
+        // Golden Rules Search
+        const grSearch = document.getElementById('goldenRuleSearchInput');
+        if (grSearch) {
+          grSearch.addEventListener('input', (e) => {
+            renderGoldenRules(e.target.value);
+          });
+        }
+
+        // Copy Full Plan Summary
+        const copySummaryBtn = document.getElementById('copyMatrixCsvBtn');
+        if (copySummaryBtn) {
+          copySummaryBtn.addEventListener('click', () => {
+            const summary = [
+              `UNIVERSAL 5-STAGE STORE SALES & RETENTION PLAN (${customStoreName})`,
+              'Stage 1 (Foundation): 3-Tier Pricing Anchor + Risk-Reversal Guarantee',
+              'Stage 2 (Discovery): 70/30 Active Listening + SPIN Diagnostic Questions',
+              'Stage 3 (Value Pitch): Feature -> Advantage -> Benefit (FAB) + Micro-Commitment',
+              'Stage 4 (Closing): LAER Objection Handling + Alternative Choice Close',
+              'Stage 5 (Lock-In): Day 1 Welcome, Day 3 Check-In, Day 14 Review, Day 30 Cross-Sell, Day 90 VIP Referral Loop'
+            ].join('\n');
+            copyTextToClipboard(summary, 'Universal 5-Stage Blueprint copied!');
+          });
+        }
+      }
+
+      function updateHeroStoreBanner() {
+        const p = STORE_PROFILES[activeStoreCategory] || STORE_PROFILES.ecommerce;
+        const heroTitle = document.getElementById('heroActiveProfileTitle');
+        const heroSub = document.getElementById('heroActiveProfileSub');
+        if (heroTitle) heroTitle.textContent = `Active Blueprint: ${customStoreName} (${p.name})`;
+        if (heroSub) heroSub.textContent = p.sub;
+      }
+
+      // Initialize on DOM Ready
+      window.addEventListener('DOMContentLoaded', () => {
+        updateReadinessProgress();
+        renderSlideNavPills();
+        renderOverviewStageCards();
+        updateFabPitchOutput();
+        renderObjectionBattlecards();
+        renderCourseModules();
+        renderGoldenRules('');
+        updateLtvSimulation();
+        initEvents();
+        goToSlide(1);
+      });
+    })();
+  </script>
+</body>
+</html>
